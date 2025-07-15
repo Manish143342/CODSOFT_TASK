@@ -1,31 +1,22 @@
-let input = document.getElementById('inputBox');
-let buttons=document.querySelectorAll('button');
+let header=document.querySelector('header');
+let menu=document.querySelector('#menu-icon');
+let navbar=document.querySelector('.navbar');
 
-let string="";
-let arr= Array.from(buttons);
-arr.forEach(button=>
-    {
-        button.addEventListener('click',(e)=>{
-            if(e.target.innerHTML== '='){
-                string=eval(string) //javascript inbuilt 
-                //function
-                input.value=string;
-            }
-            else if(e.target.innerHTML=='AC')
-                {
-                    string="";
-                    input.value=string
-;                }
-            else if(e.target.innerHTML=="DEL")
-                {
-                    string=string.substring(0,string.length-1)  //last element excluded
-                    input.value=string;
-                }
-            else{
-                    string+=e.target.innerHTML;
-                    input.value=string
-                }
-            
-        })
+menu.onclick=() => {
+    navbar.classList.toggle('active');
+}
+
+//darkmode
+let darkmode=document.querySelector('#darkmode');
+
+darkmode.oneclick= () =>{
+    if(darkmode.classList.contains('bx-moon'))
+        {
+        darkmode.classList.replace('bx-moon','bx-sun');
+        document.body.classList.add('active');
     }
-)
+    else{
+        darkmode.classList.replace('bx-sun','bx-moon');
+        document.body.classList.remove('active');
+    }
+}
